@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fashion Store — Trendy styles for everyone</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">Fashion Store</h1>
+      <nav class="nav">
+        <a href="#products">Products</a>
+        <a href="#offers">Sale Offers</a>
+        <a href="#benefits">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="cart-btn" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Fresh drops • Curated looks • Sustainable choices</h2>
+        <p>Explore our hand-picked fashion collection — casuals, office wear, activewear, and accessories.</p>
+        <a class="btn" href="#products">Shop Now</a>
+      </div>
+      <div class="hero-image" aria-hidden="true"></div>
+    </section>
+
+    <section id="products" class="products-section">
+      <h2 class="section-title">Featured Products</h2>
+      <div id="product-grid" class="product-grid">
+        <!-- Product cards injected by script.js -->
+      </div>
+    </section>
+
+    <section id="offers" class="offers-section">
+      <h2 class="section-title">Upcoming Sale Offers</h2>
+      <div class="offers-table-wrap">
+        <table class="offers-table" aria-describedby="offers-desc">
+          <thead>
+            <tr>
+              <th>Offer</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Discount</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="offers-body">
+            <!-- Rows populated by script.js -->
+          </tbody>
+        </table>
+      </div>
+      <p id="offers-desc" class="muted">Plan your wardrobe — limited-time deals on seasonal collections. Dates are shown in YYYY-MM-DD.</p>
+    </section>
+
+    <section id="benefits" class="benefits-section">
+      <h2 class="section-title">Why Shop With Fashion Store?</h2>
+      <div class="benefits-grid">
+        <article class="benefit">
+          <h3>Quality & Curation</h3>
+          <p>We hand-select pieces for durability, fit, and timeless style so you look great longer.</p>
+        </article>
+        <article class="benefit">
+          <h3>Fast & Free Shipping</h3>
+          <p>Free shipping on orders over $50 and fast delivery options to get you dressed quickly.</p>
+        </article>
+        <article class="benefit">
+          <h3>Easy Returns</h3>
+          <p>30-day hassle-free returns and exchanges — because fit matters.</p>
+        </article>
+        <article class="benefit">
+          <h3>Secure Payments</h3>
+          <p>Encrypted checkout supporting cards, PayPal, and major wallets.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2 class="section-title">Get in Touch</h2>
+      <p>Questions? Email <a href="mailto:hello@fashionstore.example">hello@fashionstore.example</a> or follow us on social media.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Fashion Store. All rights reserved.</p>
+      <p class="muted">Designed with care — demo site for an assignment due 2025-10-01.</p>
+    </div>
+  </footer>
+
+  <!-- Product quickview / cart modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

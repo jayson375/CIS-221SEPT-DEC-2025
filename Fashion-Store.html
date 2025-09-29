@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fashion Store — Earthy Elegance</title>
+  <meta name="description" content="Fashion Store — curated clothing, accessories, upcoming sale offers, benefits and secure checkout (demo)." />
+  <style>
+    /* ===== Fashion Store — Brown / Cream / White Version ===== */
+    :root{
+      --bg:#f8f6f1;
+      --card:#ffffff;
+      --accent1:#8b5e3c; /* deep brown */
+      --accent2:#d4a373; /* soft beige */
+      --muted:#7a6f65;
+      --radius:14px;
+      --container:1100px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#2c2a29;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      padding-bottom:80px;
+    }
+    .wrap{max-width:var(--container);margin:0 auto;padding:22px}
+
+    /* Header */
+    header.site-header{
+      position:sticky;top:0;z-index:30;
+      background: linear-gradient(180deg, rgba(245,240,230,0.95), rgba(245,240,230,0.85));
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      backdrop-filter: blur(6px);
+    }
+    .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{font-weight:800;font-size:1.3rem;letter-spacing:1px;color:var(--accent1)}
+    nav.main-nav a{color:var(--muted);text-decoration:none;margin:0 10px;font-weight:700}
+    nav.main-nav a:hover{color:var(--accent1);text-decoration:underline}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;border:none}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.1);color:var(--muted)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:20px;padding:26px;border-radius:18px;background:linear-gradient(180deg, #fff, #f4f1eb)}
+    .hero h1{margin:0;font-size:1.6rem;color:var(--accent1)}
+    .hero p{color:var(--muted);margin:8px 0 16px}
+    .hero-visual{height:220px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+
+    /* Products */
+    .section {margin-top:28px}
+    .section h2{margin:0 0 12px;font-size:1.25rem;color:var(--accent1)}
+    .grid{display:grid;gap:18px}
+    .product-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+    .card{background:var(--card);padding:14px;border-radius:14px;border:1px solid rgba(0,0,0,0.05);display:flex;flex-direction:column;gap:10px;transition:transform .22s, box-shadow .22s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+    .thumb{height:160px;border-radius:12px;background:#f4f1eb;display:flex;align-items:center;justify-content:center;padding:10px;font-weight:800;color:var(--accent1)}
+    .meta{color:var(--muted);font-size:0.9rem}
+    .price{font-weight:900;color:var(--accent1)}
+    .card-actions{display:flex;gap:8px;margin-top:auto}
+
+    /* Offers table */
+    .offers-wrap{overflow:auto;border-radius:12px;border:1px solid rgba(0,0,0,0.08);background:#fff;padding:8px}
+    table.offers{width:100%;border-collapse:collapse}
+    table.offers th, table.offers td{padding:12px 10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.06)}
+    table.offers thead th{color:var(--muted);font-weight:700}
+
+    /* Benefits */
+    .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .benefit{padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.05)}
+
+    /* Footer */
+    footer.site-footer{position:fixed;left:0;right:0;bottom:0;padding:12px 0;background:linear-gradient(180deg, #e9e1d7, #e3d9ce);border-top:1px solid rgba(0,0,0,0.1);color:#4a3c33}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:0.95rem}
+    .muted{color:var(--muted)}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:60}
+    .modal[aria-hidden="false"]{display:flex}
+    .modal-content{width:min(900px,96%);background:#fff;padding:18px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.3);color:#2c2a29}
+    .modal-close{position:absolute;right:18px;top:10px;background:transparent;border:none;color:var(--muted);font-size:28px;cursor:pointer}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .site-header .wrap{flex-direction:column;align-items:flex-start;padding:12px 0}
+      footer .wrap{flex-direction:column;align-items:flex-start;gap:6px}
+    }
+    @media (max-width:520px){
+      nav.main-nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="logo">Fashion Store</div>
+        <div class="muted" style="font-weight:600;font-size:0.9rem">Timeless • Natural • Yours</div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#products">Products</a>
+        <a href="#offers">Sale Offers</a>
+        <a href="#benefits">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button id="cart-btn" class="btn btn-ghost" aria-haspopup="dialog">Cart (<span id="cart-count">0</span>)</button>
+        <a class="btn btn-primary" href="#products">Shop Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Main content ===== -->
+  <main class="wrap" id="top">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Natural tones • Timeless fashion • Everyday comfort</h1>
+        <p>Discover our earthy-inspired clothing collection — perfect blends of cream, brown, and white for all occasions.</p>
+        <p><a class="btn btn-primary" href="#products">Browse Collection</a></p>
+      </div>
+      <div class="hero-visual" aria-hidden="true"></div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="section" aria-labelledby="products-title">
+      <h2 id="products-title">Featured Products</h2>
+      <div class="grid product-grid" id="product-grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Offers -->
+    <section id="offers" class="section" aria-labelledby="offers-title">
+      <h2 id="offers-title">Upcoming Sale Offers</h2>
+      <div class="offers-wrap">
+        <table class="offers">
+          <thead>
+            <tr>
+              <th>Offer</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Discount</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="offers-body"></tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:8px">Limited-time earthy deals on seasonal outfits. Dates shown in YYYY-MM-DD.</p>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="section">
+      <h2>Why Shop With Fashion Store?</h2>
+      <div class="benefits">
+        <div class="benefit"><h3>Natural Materials</h3><p>We source fabrics inspired by nature for breathable comfort.</p></div>
+        <div class="benefit"><h3>Fast & Free Shipping</h3><p>Free shipping on orders over $50 and quick delivery options.</p></div>
+        <div class="benefit"><h3>Easy Returns</h3><p>30-day free returns and exchanges for perfect fit.</p></div>
+        <div class="benefit"><h3>Secure Payments</h3><p>Trusted checkout with cards, PayPal, and wallets.</p></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Get in Touch</h2>
+      <p class="muted">Questions? Email <a href="mailto:hello@fashionstore.example">hello@fashionstore.example</a></p>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>&copy; <span id="year"></span> Fashion Store. All rights reserved.</div>
+      <div class="muted">Demo site — earthy theme version</div>
+    </div>
+  </footer>
+
+  <!-- ===== Modal ===== -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ===== JS ===== -->
+<script>
+(async function(){
+  const grid = document.getElementById('product-grid');
+  const cartBtn = document.getElementById('cart-btn');
+  const cartCount = document.getElementById('cart-count');
+  const modal=document.getElementById('modal');
+  const modalBody=document.getElementById('modal-body');
+  const modalClose=document.getElementById('modal-close');
+  let cart = [];
+
+  // Load products from backend
+  async function loadProducts(){
+    const res = await fetch('/api/products');
+    const products = await res.json();
+    grid.innerHTML = '';
+    products.forEach(p=>{
+      const card=document.createElement('article');
+      card.className='card';
+      card.innerHTML=`
+        <div class="thumb">${p.category}</div>
+        <h3>${p.title}</h3>
+        <div class="price">Ksh. ${p.price}</div>
+        <div class="meta">${p.color} • ${p.description}</div>
+        <div class="meta">Stock left: ${p.stock_remaining}</div>
+        <div class="card-actions">
+          <button class="btn-ghost" data-id="${p.id}">Quick view</button>
+          <button class="btn btn-primary" data-buy="${p.id}">Add to cart</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  // Quick view
+  function openQuickView(p){
+    modal.setAttribute('aria-hidden','false');
+    modalBody.innerHTML=`
+      <h2>${p.title}</h2>
+      <p>${p.category} • ${p.color}</p>
+      <p>${p.description}</p>
+      <p style="font-weight:800;font-size:20px">Ksh. ${p.price}</p>`;
+  }
+  function closeModal(){modal.setAttribute('aria-hidden','true');modalBody.innerHTML='';}
+
+  // Purchase action
+  async function buyProduct(id){
+    const res = await fetch(`/api/purchase/${id}`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({quantity:1})
+    });
+    if(res.ok){
+      cart.push(id);
+      cartCount.textContent = cart.length;
+      await loadProducts(); // refresh stock
+    } else {
+      const err = await res.json();
+      alert(err.error || 'Error buying item');
+    }
+  }
+
+  // Events
+  document.addEventListener('click', async (e)=>{
+    const qv=e.target.closest('[data-id]');
+    const add=e.target.closest('[data-buy]');
+    if(qv){
+      const id=Number(qv.getAttribute('data-id'));
+      const productList = await (await fetch('/api/products')).json();
+      const p = productList.find(x=>x.id===id);
+      openQuickView(p);
+    }
+    if(add) buyProduct(Number(add.getAttribute('data-buy')));
+  });
+  modalClose.addEventListener('click',closeModal);
+  modal.addEventListener('click',(e)=>{if(e.target===modal)closeModal();});
+  document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeModal();});
+  cartBtn.addEventListener('click',()=>{alert("Cart has "+cart.length+" items.");});
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // Initial load
+  loadProducts();
+})();
+</script>
+
+</body>
+</html>
